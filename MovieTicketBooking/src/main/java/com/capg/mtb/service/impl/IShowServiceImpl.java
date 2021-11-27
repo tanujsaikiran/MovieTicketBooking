@@ -1,4 +1,4 @@
-package com.capg.mtb.service;
+package com.capg.mtb.service.impl;
 
 public class IShowServiceImpl {
 
