@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories("com.capg.project.*")
-@ComponentScan(basePackages = { "com.capg.project.*" })
-@EntityScan(basePackages = { "com.capg.project.*" })
+@EnableJpaRepositories("com.capg.*")
+@ComponentScan(basePackages = { "com.capg.*" })
+@EntityScan(basePackages = { "com.capg.*" })
 public class MovieTicketBookingApplication {
 
 	public static void main(String[] args) {
