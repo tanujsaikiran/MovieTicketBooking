@@ -2,8 +2,15 @@ package com.capg.mtb.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="Show")
 public class Show {
-	
+	@Id
+	@GeneratedValue
 	private int showid;
 	private LocalDateTime showStartTime;
 	private LocalDateTime showEndTime;
