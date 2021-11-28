@@ -2,12 +2,25 @@ package com.capg.mtb.model;
 
 import java.util.List;
 
-public class Theater {
-	
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+
+@Entity
+@Table(name="Theatre")
+public class Theatre {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int theatreid;
 	private String theatreName;
 	private String theatreCity;
+	@Transient
 	private List<Movie> listOfMovies;
+	@Transient
 	private List<Screen> listOfScreens;
 	private String managerName;
 	private String managerContact;
