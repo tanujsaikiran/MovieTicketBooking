@@ -14,14 +14,5 @@ public interface IShowService {
 	List<Show> viewShowList(int theatreid);
 	List<Show> viewShowList(LocalDate date);
 	List<Show> viewAllShows();
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

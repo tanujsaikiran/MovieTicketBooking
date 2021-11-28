@@ -21,8 +21,8 @@ public class Screen {
 	@Transient
 	private List<Show> showList;
 	
-	private int row;
-	private int column;
+	private int rowCount;
+	private int columnCount;
 
 	public long getScreenId() {
 		return screenId;
@@ -48,20 +48,20 @@ public class Screen {
 		this.showList = showList;
 	}
 
-	public int getRow() {
-		return row;
+	public int getRowCount() {
+		return rowCount;
 	}
 
-	public void setRow(int row) {
-		this.row = row;
+	public void setRowCount(int rowCount) {
+		this.rowCount = rowCount;
 	}
 
-	public int getColumn() {
-		return column;
+	public int getColumnCount() {
+		return columnCount;
 	}
 
-	public void setColumn(int column) {
-		this.column = column;
+	public void setColumnCount(int columnCount) {
+		this.columnCount = columnCount;
 	}
 
 }

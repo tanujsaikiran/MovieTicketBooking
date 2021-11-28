@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capg.mtb.model.Movie;
-import com.capg.mtb.service.IMovieService;
+import com.capg.mtb.model.Show;
+import com.capg.mtb.service.IShowService;
 
 @RestController
-public class Moviecontroller {
+public class ShowController {
 	
 	@Autowired
-	private IMovieService iMovieService;
-
-	@PostMapping("/addMovie")
-	public ResponseEntity<Movie> addMovie(@RequestBody Movie movie){
-		return ResponseEntity.ok(iMovieService.addMovie(movie));
-	}
+	private IShowService iShowService;
 	
+	@PostMapping("/addShow")
+	public ResponseEntity<Show> addMovie(@RequestBody Show show){
+		return ResponseEntity.ok(iShowService.addShow(show));
+
+}
 }

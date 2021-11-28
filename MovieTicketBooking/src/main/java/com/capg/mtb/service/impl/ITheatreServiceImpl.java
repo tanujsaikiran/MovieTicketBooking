@@ -11,13 +11,10 @@ import com.capg.mtb.service.ITheatreService;
 public class ITheatreServiceImpl implements ITheatreService{
 	
 	@Autowired
-	ITheatreRepository ITheatreRepository;
+	ITheatreRepository iTheatreRepository;
 
 	@Override
 	public Theatre addtheatre(Theatre theatre) {
-	
-		return ITheatreRepository.save(theatre);
+		return iTheatreRepository.save(theatre);
 	}
-	
-
 }
