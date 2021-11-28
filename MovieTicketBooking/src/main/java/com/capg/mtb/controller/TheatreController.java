@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capg.mtb.model.Movie;
 import com.capg.mtb.model.Theatre;
 import com.capg.mtb.service.ITheatreService;
 
@@ -16,7 +15,7 @@ public class TheatreController {
 	@Autowired
 	private ITheatreService iTheatreService;
 	
-	@PostMapping("/addtheatre")
+	@PostMapping("/addTheatre")
 	public ResponseEntity<Theatre> addMovie(@RequestBody Theatre theatre){
 		return ResponseEntity.ok(iTheatreService.addtheatre(theatre));
 
