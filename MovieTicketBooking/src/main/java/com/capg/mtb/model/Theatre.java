@@ -10,21 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Theatres")
 public class Theatre {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long theatreId;
 
 	private String theatreName;
 
 	private String theatreCity;
 
-	@Transient
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Movie> listOfMovies;
 
 	@OneToMany(cascade = CascadeType.ALL)

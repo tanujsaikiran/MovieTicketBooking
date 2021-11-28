@@ -18,6 +18,5 @@ public class TheatreController {
 	@PostMapping("/addTheatre")
 	public ResponseEntity<Theatre> addMovie(@RequestBody Theatre theatre){
 		return ResponseEntity.ok(iTheatreService.addtheatre(theatre));
-
-}
+	}
 }

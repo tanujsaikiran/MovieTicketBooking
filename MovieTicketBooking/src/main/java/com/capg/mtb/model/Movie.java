@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Movie {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long movieId;
 	private String movieName;
 	private String movieGenre;

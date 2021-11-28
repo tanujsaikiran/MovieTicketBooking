@@ -1,7 +1,6 @@
 package com.capg.mtb.service.impl;
 
 import java.time.LocalDate;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,11 @@ import org.springframework.stereotype.Component;
 import com.capg.mtb.model.Show;
 import com.capg.mtb.repository.IShowRepository;
 import com.capg.mtb.service.IShowService;
+import com.cg.mtb.exceptions.ShowNotFoundException;
 
 @Component
 public class IShowServiceImpl implements IShowService {
-	
+
 	@Autowired
 	IShowRepository iShowRepository;
 
@@ -24,38 +24,34 @@ public class IShowServiceImpl implements IShowService {
 
 	@Override
 	public Show updateShow(Show show) {
-		
-		return null;
+		return iShowRepository.save(show);
 	}
 
 	@Override
-	public Show removeShow(Show show) {
-		
-		return null;
+	public void removeShow(long id) throws ShowNotFoundException {
+		Show show = iShowRepository.findById(id)
+				.orElseThrow(() -> new ShowNotFoundException("No movie id is found:" + id));
+		iShowRepository.delete(show);
 	}
 
 	@Override
-	public Show viewShow(Show show) {
-		
-		return null;
+	public Show viewShow(long id) throws ShowNotFoundException {
+		return iShowRepository.findById(id).orElseThrow(() -> new ShowNotFoundException("No movie id is found:" + id));
 	}
 
 	@Override
-	public List<Show> viewShowList(int theatreid) {
-		
-		return null;
+	public List<Show> viewShowList(int theatreId) {
+		return iShowRepository.findByTheatreId(theatreId);
 	}
 
 	@Override
 	public List<Show> viewShowList(LocalDate date) {
-		
-		return null;
+		return iShowRepository.findByLocalDate(date);
 	}
 
 	@Override
 	public List<Show> viewAllShows() {
-		
-		return null;
+		return iShowRepository.findAll();
 	}
 
 }

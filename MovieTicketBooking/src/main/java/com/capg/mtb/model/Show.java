@@ -2,27 +2,34 @@ package com.capg.mtb.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Shows")
 public class Show {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long showId;
+
 	private LocalDateTime showStartTime;
+
 	private LocalDateTime showEndTime;
+
 	private String showName;
-	@Transient
-	private Movie movie;
+
 	private long movieId;
+	
 	private long screenId;
+
 	private long theatreId;
 
 	public LocalDateTime getShowStartTime() {
@@ -47,14 +54,6 @@ public class Show {
 
 	public void setShowName(String showName) {
 		this.showName = showName;
-	}
-
-	public Movie getMovie() {
-		return movie;
-	}
-
-	public void setMovie(Movie movie) {
-		this.movie = movie;
 	}
 
 	public long getShowId() {
@@ -88,5 +87,5 @@ public class Show {
 	public void setMovieId(long movieId) {
 		this.movieId = movieId;
 	}
-
+	
 }

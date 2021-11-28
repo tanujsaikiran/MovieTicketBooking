@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.capg.mtb.model.Movie;
+import com.cg.mtb.exceptions.MovieNotFoundException;
 
 public interface IMovieService  {
 	
@@ -11,13 +12,13 @@ public interface IMovieService  {
 	 
 	 Movie updateMovie(Movie movie);
 	 
-	 Movie removeMovie(Movie movie);
+	 void removeMovie(long id) throws MovieNotFoundException;
 	 
-	 Movie viewMovie(Movie movie);
+	 Movie viewMovie(long id) throws MovieNotFoundException;
 	 
 	 List<Movie> viewMovieList();
 	 
-	 List<Movie> viewMovieList(int theatreid);
+	 List<Movie> viewMovieList(long theatreid);
 	 
 	 List<Movie> viewMovieList(LocalDate date);
 }
