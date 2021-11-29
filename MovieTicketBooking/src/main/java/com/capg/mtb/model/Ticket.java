@@ -27,7 +27,7 @@ public class Ticket {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ticketId", referencedColumnName = "ticketId")
-	private TicketBooking bookingRef;
+	private Booking bookingRef;
 
 	private boolean ticketStatus;
 
@@ -55,11 +55,11 @@ public class Ticket {
 		this.seatNumber = seatNumber;
 	}
 
-	public TicketBooking getBookingRef() {
+	public Booking getBookingRef() {
 		return bookingRef;
 	}
 
-	public void setBookingRef(TicketBooking bookingRef) {
+	public void setBookingRef(Booking bookingRef) {
 		this.bookingRef = bookingRef;
 	}
 
