@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +21,8 @@ public class BookingController {
 	IBookingService iBookingService;
 
 	@PostMapping("/addBooking")
-	public TicketBooking addBooking(TicketBooking booking) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseEntity<TicketBooking> addBooking(TicketBooking booking) throws Exception {
+		return ResponseEntity.ok(iBookingService.addBooking(booking));
 	}
 
 	@PostMapping("/updateBooking")

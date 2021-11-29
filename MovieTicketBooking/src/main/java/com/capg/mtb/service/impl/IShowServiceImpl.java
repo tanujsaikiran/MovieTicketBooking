@@ -30,7 +30,7 @@ public class IShowServiceImpl implements IShowService {
 	@Override
 	public void removeShow(long id) throws ShowNotFoundException {
 		Show show = iShowRepository.findById(id)
-				.orElseThrow(() -> new ShowNotFoundException("No movie id is found:" + id));
+				.orElseThrow(() -> new ShowNotFoundException("No show id is found:" + id));
 		iShowRepository.delete(show);
 	}
 
