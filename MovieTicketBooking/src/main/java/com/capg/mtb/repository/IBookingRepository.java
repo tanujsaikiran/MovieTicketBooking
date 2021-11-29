@@ -1,7 +1,9 @@
 package com.capg.mtb.repository;
 
-public class IBookingRepository {
-	
-	
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.capg.mtb.model.TicketBooking;
+
+public interface IBookingRepository extends JpaRepository<TicketBooking, Long>{
 	
 }
