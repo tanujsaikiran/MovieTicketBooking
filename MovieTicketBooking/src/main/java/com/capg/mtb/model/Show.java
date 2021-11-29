@@ -14,7 +14,7 @@ public class Show {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long showId;
+	private int showId;
 
 	private LocalDateTime showStartTime;
 
@@ -22,11 +22,11 @@ public class Show {
 
 	private String showName;
 
-	private long movieId;
+	private int movieId;
 	
-	private long screenId;
+	private int screenId;
 
-	private long theatreId;
+	private int theatreId;
 
 	public LocalDateTime getShowStartTime() {
 		return showStartTime;
@@ -52,35 +52,35 @@ public class Show {
 		this.showName = showName;
 	}
 
-	public long getShowId() {
+	public int getShowId() {
 		return showId;
 	}
 
-	public void setShowId(long showId) {
+	public void setShowId(int showId) {
 		this.showId = showId;
 	}
 
-	public long getScreenId() {
+	public int getScreenId() {
 		return screenId;
 	}
 
-	public void setScreenId(long screenId) {
+	public void setScreenId(int screenId) {
 		this.screenId = screenId;
 	}
 
-	public long getTheatreId() {
+	public int getTheatreId() {
 		return theatreId;
 	}
 
-	public void setTheatreId(long theatreId) {
+	public void setTheatreId(int theatreId) {
 		this.theatreId = theatreId;
 	}
 
-	public long getMovieId() {
+	public int getMovieId() {
 		return movieId;
 	}
 
-	public void setMovieId(long movieId) {
+	public void setMovieId(int movieId) {
 		this.movieId = movieId;
 	}
 	

@@ -6,11 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.capg.mtb.model.TicketBooking;
+import com.capg.mtb.exceptions.BookingNotFoundException;
+import com.capg.mtb.exceptions.ShowNotFoundException;
+import com.capg.mtb.model.Booking;
 import com.capg.mtb.repository.IBookingRepository;
 import com.capg.mtb.repository.IShowRepository;
 import com.capg.mtb.service.IBookingService;
-import com.cg.mtb.exceptions.ShowNotFoundException;
 
 @Component
 public class IBookingServiceImpl implements IBookingService {
@@ -22,46 +23,51 @@ public class IBookingServiceImpl implements IBookingService {
 	IShowRepository iShowRepository;
 
 	@Override
-	public TicketBooking addBooking(TicketBooking booking) throws Exception {
+	public Booking addBooking(Booking booking) throws Exception {
 		iShowRepository.findById(booking.getShowId())
 				.orElseThrow(() -> new ShowNotFoundException("No show id is found:" + booking.getShowId()));
 		return iBookingRepository.save(booking);
 	}
 
 	@Override
-	public TicketBooking updateBooking(TicketBooking booking) {
-		// TODO Auto-generated method stub
-		return null;
+	public Booking updateBooking(Booking booking) throws BookingNotFoundException {
+		boolean exists = iBookingRepository.existsById(booking.getBookingId());
+		if (!exists) {
+			throw new BookingNotFoundException("Booking does not exists for id=" + booking.getBookingId());
+		}
+		booking = iBookingRepository.save(booking);
+		return booking;
 	}
 
 	@Override
-	public TicketBooking cancelBooking(TicketBooking booking) {
-		// TODO Auto-generated method stub
-		return null;
+	public Booking cancelBooking(int bookingid) throws BookingNotFoundException {
+
+		Booking booking = iBookingRepository.findById(bookingid).orElseThrow();
+		iBookingRepository.delete(booking);
+
+		return booking;
 	}
 
 	@Override
-	public List<TicketBooking> showAllBooking(int movieid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Booking> showAllBooking(int movieid) throws BookingNotFoundException {
+		return iBookingRepository.findByMovieid(movieid);
 	}
 
 	@Override
-	public List<TicketBooking> showAllBooking(LocalDate date) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Booking> showAllBooking(LocalDate date) {
+		return iBookingRepository.findByBookingDate(date);
 	}
 
 	@Override
-	public List<TicketBooking> showAllBookingList(int showid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Booking> showAllBookingList(int showid) throws BookingNotFoundException {
+		return iBookingRepository.findByShowId(showid);
+
 	}
 
 	@Override
 	public double calculateTotalCost(int bookingid) {
-		// TODO Auto-generated method stub
-		return 0;
+		Booking booking = iBookingRepository.findById(bookingid).get();
+		return booking.getTotalCost();
 	}
 
 }

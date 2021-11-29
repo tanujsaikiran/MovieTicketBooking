@@ -17,7 +17,7 @@ public class Theatre {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long theatreId;
+	private int theatreId;
 
 	private String theatreName;
 
@@ -34,11 +34,11 @@ public class Theatre {
 
 	private String managerContact;
 
-	public long getTheatreId() {
+	public int getTheatreId() {
 		return theatreId;
 	}
 
-	public void setTheatreId(long theatreId) {
+	public void setTheatreId(int theatreId) {
 		this.theatreId = theatreId;
 	}
 

@@ -17,9 +17,9 @@ public class Booking {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long bookingId;
+	private int bookingId;
 	
-	private long showId;
+	private int showId;
 	
 	private LocalDate bookingDate;
 	
@@ -35,19 +35,19 @@ public class Booking {
 	@JoinColumn(name = "ticketId", referencedColumnName = "ticketId")
 	private Ticket ticket;
 
-	public long getBookingId() {
+	public int getBookingId() {
 		return bookingId;
 	}
 
-	public void setBookingId(long bookingId) {
+	public void setBookingId(int bookingId) {
 		this.bookingId = bookingId;
 	}
 
-	public long getShowId() {
+	public int getShowId() {
 		return showId;
 	}
 
-	public void setShowId(long showId) {
+	public void setShowId(int showId) {
 		this.showId = showId;
 	}
 

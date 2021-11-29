@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Ticket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ticketId;
+	private int ticketId;
 
 	private int noOfSeats;
 
@@ -31,11 +31,11 @@ public class Ticket {
 
 	private boolean ticketStatus;
 
-	public long getTicketId() {
+	public int getTicketId() {
 		return ticketId;
 	}
 
-	public void setTicketId(long ticketId) {
+	public void setTicketId(int ticketId) {
 		this.ticketId = ticketId;
 	}
 

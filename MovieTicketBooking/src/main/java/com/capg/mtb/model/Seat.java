@@ -12,16 +12,16 @@ public class Seat {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long seatId;
+	private int seatId;
 	private String seatNumber;
 	private String type;
 	private double price;
 
-	public long getSeatId() {
+	public int getSeatId() {
 		return seatId;
 	}
 
-	public void setSeatId(long seatId) {
+	public void setSeatId(int seatId) {
 		this.seatId = seatId;
 	}
 

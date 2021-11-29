@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capg.mtb.exceptions.MovieNotFoundException;
 import com.capg.mtb.model.Movie;
 import com.capg.mtb.service.IMovieService;
-import com.cg.mtb.exceptions.MovieNotFoundException;
 
 @RestController
 public class MovieController {
@@ -33,13 +33,13 @@ public class MovieController {
 	}
 	
 	@DeleteMapping("/removeMovie/{id}")
-	public String removeMovie(@PathVariable("id") long movieId) throws MovieNotFoundException {
+	public String removeMovie(@PathVariable("id") int movieId) throws MovieNotFoundException {
 		iMovieService.removeMovie(movieId);
 		return "Success";
 	}
 	
 	@GetMapping("/movieById/{id}")
-	public ResponseEntity<Movie> view(@PathVariable("id")long id) throws MovieNotFoundException{
+	public ResponseEntity<Movie> view(@PathVariable("id")int id) throws MovieNotFoundException{
 		return ResponseEntity.ok(iMovieService.viewMovie(id));
 	}
 	
@@ -49,7 +49,7 @@ public class MovieController {
 	}
 	
 	@GetMapping("/movieByTheatreId/{id}")
-	public List<Movie> viewMovieList(@PathVariable("id")long id){
+	public List<Movie> viewMovieList(@PathVariable("id")int id){
 		return iMovieService.viewMovieList(id);
 	}
 	

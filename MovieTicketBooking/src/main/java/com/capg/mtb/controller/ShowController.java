@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capg.mtb.exceptions.ShowNotFoundException;
 import com.capg.mtb.model.Show;
 import com.capg.mtb.service.IShowService;
-import com.cg.mtb.exceptions.ShowNotFoundException;
 
 @RestController
 public class ShowController {
@@ -34,13 +34,13 @@ public class ShowController {
 	}
 
 	@DeleteMapping("/removeShow/{id}")
-	public BodyBuilder removeShow(@PathVariable("id") long id) throws ShowNotFoundException {
+	public BodyBuilder removeShow(@PathVariable("id") int id) throws ShowNotFoundException {
 		iShowService.removeShow(id);
 		return ResponseEntity.ok();
 	}
 
 	@GetMapping("/showById/{id}")
-	public ResponseEntity<Show> viewShow(@PathVariable("id") long id) throws ShowNotFoundException {
+	public ResponseEntity<Show> viewShow(@PathVariable("id") int id) throws ShowNotFoundException {
 		return ResponseEntity.ok(iShowService.viewShow(id));
 	}
 

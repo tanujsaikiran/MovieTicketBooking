@@ -12,7 +12,7 @@ public class Movie {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long movieId;
+	private int movieId;
 	private String movieName;
 	private String movieGenre;
 	private String movieHours;
@@ -23,11 +23,11 @@ public class Movie {
 		super();
 	}
 
-	public long getMovieId() {
+	public int getMovieId() {
 		return movieId;
 	}
 
-	public void setMovieId(long movieId) {
+	public void setMovieId(int movieId) {
 		this.movieId = movieId;
 	}
 

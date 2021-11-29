@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.capg.mtb.exceptions.ShowNotFoundException;
 import com.capg.mtb.model.Show;
 import com.capg.mtb.repository.IShowRepository;
 import com.capg.mtb.service.IShowService;
-import com.cg.mtb.exceptions.ShowNotFoundException;
 
 @Component
 public class IShowServiceImpl implements IShowService {
@@ -28,14 +28,14 @@ public class IShowServiceImpl implements IShowService {
 	}
 
 	@Override
-	public void removeShow(long id) throws ShowNotFoundException {
+	public void removeShow(int id) throws ShowNotFoundException {
 		Show show = iShowRepository.findById(id)
 				.orElseThrow(() -> new ShowNotFoundException("No show id is found:" + id));
 		iShowRepository.delete(show);
 	}
 
 	@Override
-	public Show viewShow(long id) throws ShowNotFoundException {
+	public Show viewShow(int id) throws ShowNotFoundException {
 		return iShowRepository.findById(id).orElseThrow(() -> new ShowNotFoundException("No movie id is found:" + id));
 	}
 

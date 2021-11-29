@@ -16,7 +16,7 @@ public class Screen {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long screenId;
+	private int screenId;
 	
 	private String screenName;
 	
@@ -26,11 +26,11 @@ public class Screen {
 	private int rowCount;
 	private int columnCount;
 
-	public long getScreenId() {
+	public int getScreenId() {
 		return screenId;
 	}
 
-	public void setScreenId(long screenId) {
+	public void setScreenId(int screenId) {
 		this.screenId = screenId;
 	}
 

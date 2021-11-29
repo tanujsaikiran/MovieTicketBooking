@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capg.mtb.model.TicketBooking;
+import com.capg.mtb.exceptions.BookingNotFoundException;
+import com.capg.mtb.model.Booking;
 import com.capg.mtb.service.IBookingService;
 
 @RestController
@@ -21,44 +22,38 @@ public class BookingController {
 	IBookingService iBookingService;
 
 	@PostMapping("/addBooking")
-	public ResponseEntity<TicketBooking> addBooking(TicketBooking booking) throws Exception {
+	public ResponseEntity<Booking> addBooking(Booking booking) throws Exception {
 		return ResponseEntity.ok(iBookingService.addBooking(booking));
 	}
 
 	@PostMapping("/updateBooking")
-	public TicketBooking updateBooking(TicketBooking booking) {
-		// TODO Auto-generated method stub
-		return null;
+	public Booking updateBooking(Booking booking) throws BookingNotFoundException {
+		return iBookingService.updateBooking(booking);
 	}
 
 	@DeleteMapping("/cancelBooking")
-	public TicketBooking cancelBooking(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Booking cancelBooking(int id) throws BookingNotFoundException {
+		return iBookingService.cancelBooking(id);
 	}
 
 	@GetMapping("/bookingByMovieId/{movieId}")
-	public List<TicketBooking> showAllBooking(@PathVariable("id") long movieid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Booking> showAllBooking(@PathVariable("id") int movieid) throws BookingNotFoundException {
+		return iBookingService.showAllBooking(movieid);
 	}
 
 	@GetMapping("/bookingByDate/{date}")
-	public List<TicketBooking> showAllBooking(@PathVariable("date") LocalDate date) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Booking> showAllBooking(@PathVariable("date") LocalDate date) {
+		return iBookingService.showAllBooking(date);
 	}
 
 	@GetMapping("/bookingByShowId/{showId}")
-	public List<TicketBooking> showAllBookingList(@PathVariable("showId") long showid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Booking> showAllBookingList(@PathVariable("showId") int showid) throws BookingNotFoundException {
+		return iBookingService.showAllBookingList(showid);
 	}
 
 	@GetMapping("/calculateTotalCost/{bookingid}")
-	public double calculateTotalCost(@PathVariable("bookingid") long bookingid) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double calculateTotalCost(@PathVariable("bookingid") int bookingid) {
+		return iBookingService.calculateTotalCost(bookingid);
 	}
 
 }

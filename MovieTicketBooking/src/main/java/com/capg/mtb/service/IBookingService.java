@@ -3,15 +3,17 @@ package com.capg.mtb.service;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.capg.mtb.model.TicketBooking;
+import com.capg.mtb.exceptions.BookingNotFoundException;
+import com.capg.mtb.model.Booking;
 
 public interface IBookingService {
-	TicketBooking addBooking(TicketBooking booking) throws Exception;
-	TicketBooking updateBooking(TicketBooking booking);
-	TicketBooking cancelBooking(TicketBooking booking);
-	List<TicketBooking> showAllBooking(int movieid);
-	List<TicketBooking> showAllBooking(LocalDate date);
-	List<TicketBooking> showAllBookingList(int showid);
+	Booking addBooking(Booking booking) throws Exception;
+	Booking updateBooking(Booking booking) throws BookingNotFoundException;
+	Booking cancelBooking(int bookingid) throws BookingNotFoundException;
+	List<Booking> showAllBooking(LocalDate date);
+	List<Booking> showAllBookingList(int showid) throws BookingNotFoundException;
 	double calculateTotalCost(int bookingid);
+	List<Booking> showAllBooking(int movieid) throws BookingNotFoundException;
+
 
 }
