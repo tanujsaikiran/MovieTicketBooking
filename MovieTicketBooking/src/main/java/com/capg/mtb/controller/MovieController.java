@@ -53,8 +53,8 @@ public class MovieController {
 		return iMovieService.viewMovieList(id);
 	}
 	
-	@GetMapping("/movieByDate/{date}")
-	public List<Movie> viewMovieList(@PathVariable("date")LocalDate date){
+	@PostMapping("/movieByDate/{date}")
+	public List<Movie> viewMovieList(@RequestBody LocalDate date){
 		return iMovieService.viewMovieList(date);
 	}
 }

@@ -50,7 +50,8 @@ public class IMovieServiceImpl implements IMovieService {
 
 	@Override
 	public List<Movie> viewMovieList(int theatreid) {
-		return iMovieRepository.findByTheatreId(theatreid);
+		List<Integer> movieIds = iMovieRepository.findByTheatreId(theatreid);
+		 return iMovieRepository.findAllById(movieIds);
 	}
 
 	@Override

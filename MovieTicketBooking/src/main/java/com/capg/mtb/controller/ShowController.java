@@ -34,9 +34,9 @@ public class ShowController {
 	}
 
 	@DeleteMapping("/removeShow/{id}")
-	public BodyBuilder removeShow(@PathVariable("id") int id) throws ShowNotFoundException {
+	public String removeShow(@PathVariable("id") int id) throws ShowNotFoundException {
 		iShowService.removeShow(id);
-		return ResponseEntity.ok();
+		return "Success";
 	}
 
 	@GetMapping("/showById/{id}")
@@ -46,7 +46,7 @@ public class ShowController {
 
 	@GetMapping("/showBytheatreId/{theatreId}")
 	public List<Show> viewShowList(@PathVariable("theatreId") int theatreId) {
-		return iShowService.viewAllShows();
+		return iShowService.viewShowList(theatreId);
 	}
 
 	@GetMapping("/showByDate/{date}")
@@ -54,7 +54,7 @@ public class ShowController {
 		return iShowService.viewShowList(date);
 	}
 
-	@GetMapping("viewAllShows")
+	@GetMapping("/viewAllShows")
 	public List<Show> viewAllShows() {
 		return iShowService.viewAllShows();
 	}
