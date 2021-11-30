@@ -1,6 +1,5 @@
 package com.capg.mtb.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +42,12 @@ public class BookingController {
 		return iBookingService.showAllBooking(movieid);
 	}
 
-	@GetMapping("/bookingByDate/{date}")
-	public List<Booking> showAllBooking(@PathVariable("date") LocalDate date) {
-		return iBookingService.showAllBooking(date);
+	@PostMapping("/bookingByDate")
+	public List<Booking> showAllBooking(@RequestBody Booking booking) throws BookingNotFoundException {
+		if(booking.getBookingDate()==null)
+			throw new BookingNotFoundException("booking date is mandatory");
+		
+		return iBookingService.showAllBooking(booking.getBookingDate());
 	}
 
 	@GetMapping("/bookingByShowId/{showId}")

@@ -44,7 +44,6 @@ public class IBookingServiceImpl implements IBookingService {
 
 	@Override
 	public void cancelBooking(int bookingid) throws BookingNotFoundException {
-
 		Booking booking = iBookingRepository.findById(bookingid).orElseThrow(() -> new BookingNotFoundException("No show id is found:" + bookingid));
 		iBookingRepository.delete(booking);
 		
