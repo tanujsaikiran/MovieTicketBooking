@@ -52,7 +52,9 @@ public class IShowServiceImpl implements IShowService {
 	}
 
 	@Override
-	public Show updateShow(Show show) {
+	public Show updateShow(Show show) throws ShowNotFoundException {
+		iShowRepository.findById(show.getShowId())
+				.orElseThrow(() -> new ShowNotFoundException("No show id is found:" + show.getShowId()));
 		return iShowRepository.save(show);
 	}
 
