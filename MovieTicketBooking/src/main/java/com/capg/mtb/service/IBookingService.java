@@ -17,7 +17,7 @@ public interface IBookingService {
 
 	List<Booking> showAllBookingList(int showid) throws BookingNotFoundException;
 
-	double calculateTotalCost(int bookingid);
+	double calculateTotalCost(int bookingid) throws BookingNotFoundException;
 
 	List<Booking> showAllBooking(int movieid) throws BookingNotFoundException;
 

@@ -35,6 +35,9 @@ public class IBookingServiceImpl implements IBookingService {
 		if (!exists) {
 			throw new BookingNotFoundException("Booking does not exists for id=" + booking.getBookingId());
 		}
+		else if (!iBookingRepository.existsById(booking.getShowId())){
+			throw new BookingNotFoundException("Show id  does not exists for id=" + booking.getShowId());
+		}
 		booking = iBookingRepository.save(booking);
 		return booking;
 	}
@@ -64,8 +67,8 @@ public class IBookingServiceImpl implements IBookingService {
 	}
 
 	@Override
-	public double calculateTotalCost(int bookingid) {
-		Booking booking = iBookingRepository.findById(bookingid).get();
+	public double calculateTotalCost(int bookingid) throws BookingNotFoundException{
+		Booking booking = iBookingRepository.findById(bookingid).orElseThrow(() -> new BookingNotFoundException("No Booking id is found:" + bookingid));
 		return booking.getTotalCost();
 	}
 

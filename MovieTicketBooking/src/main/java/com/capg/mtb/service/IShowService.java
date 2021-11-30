@@ -8,9 +8,9 @@ import com.capg.mtb.model.Show;
 
 public interface IShowService {
 
-	Show addShow(Show show);
+	Show addShow(Show show) throws Exception;
 
-	Show updateShow(Show show);
+	Show updateShow(Show show) throws ShowNotFoundException;
 
 	void removeShow(int id) throws ShowNotFoundException;
 

@@ -6,9 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.capg.mtb.exceptions.MovieNotFoundException;
 import com.capg.mtb.exceptions.ShowNotFoundException;
 import com.capg.mtb.model.Show;
+import com.capg.mtb.model.Theatre;
+import com.capg.mtb.repository.IMovieRepository;
 import com.capg.mtb.repository.IShowRepository;
+import com.capg.mtb.repository.ITheatreRepository;
 import com.capg.mtb.service.IShowService;
 
 @Component
@@ -16,9 +20,34 @@ public class IShowServiceImpl implements IShowService {
 
 	@Autowired
 	IShowRepository iShowRepository;
+	
+	@Autowired
+	IMovieRepository iMovieRepository;
+	
+	@Autowired
+	ITheatreRepository iTheatreRepository;
+	
 
 	@Override
-	public Show addShow(Show show) {
+	public Show addShow(Show show) throws Exception {
+		
+		if(!iMovieRepository.existsById(show.getMovieId())){
+			throw new MovieNotFoundException("No movie id is found:" + show.getMovieId());
+			
+		} else {
+			
+			Theatre theatre = iTheatreRepository.getById(show.getTheatreId());
+			
+			if(theatre==null) {
+				throw new MovieNotFoundException("No theatre id is found:" + show.getTheatreId());
+			}
+			
+			if(theatre.getListOfScreens().stream().filter(e->e.getScreenId()==show.getScreenId()).findAny().isEmpty()) {
+				throw new MovieNotFoundException("Screen Id and Theatre Id are not matching");	
+			}
+			
+		}
+		
 		return iShowRepository.save(show);
 	}
 

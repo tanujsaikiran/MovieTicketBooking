@@ -54,7 +54,7 @@ public class BookingController {
 	}
 
 	@GetMapping("/calculateTotalCost/{bookingid}")
-	public double calculateTotalCost(@PathVariable("bookingid") int bookingid) {
+	public double calculateTotalCost(@PathVariable("bookingid") int bookingid)throws BookingNotFoundException {
 		return iBookingService.calculateTotalCost(bookingid);
 	}
 

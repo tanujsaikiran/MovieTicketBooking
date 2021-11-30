@@ -24,12 +24,12 @@ public class ShowController {
 	private IShowService iShowService;
 
 	@PostMapping("/addShow")
-	public ResponseEntity<Show> addShow(@RequestBody Show show) {
+	public ResponseEntity<Show> addShow(@RequestBody Show show) throws Exception {
 		return ResponseEntity.ok(iShowService.addShow(show));
 	}
 
 	@PostMapping("/updateShow")
-	public ResponseEntity<Show> updateShow(@RequestBody Show show) {
+	public ResponseEntity<Show> updateShow(@RequestBody Show show) throws ShowNotFoundException {
 		return ResponseEntity.ok(iShowService.updateShow(show));
 	}
 
